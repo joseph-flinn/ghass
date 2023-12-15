@@ -1,0 +1,22 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  e2e:octokit:
+    silent: true
+    cmds:
+      - |
+        curl -s -X POST \
+          -H "Content-Type: application/json" \
+          -H "X-App-Install-ID: 44652407" \
+          http://localhost:3000/ghass/octokit -d "@vault.json" | jq
+
+  e2e:dsync:
+    silent: true
+    cmds:
+      - |
+        curl -s -X POST \
+          -H "Content-Type: application/json" \
+          -H "X-App-Install-ID: 44652407" \
+          http://localhost:3000/ghass/dsync -d "@vault.json" | jq
