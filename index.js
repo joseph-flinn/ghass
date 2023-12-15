@@ -1,5 +1,4 @@
-const sodium = require('libsodium-wrappers')
-
+const sync = require('./src/sync')
 /**
  * This is the main entrypoint to your Probot app
  * @param {import('probot').Probot} app
@@ -49,6 +48,10 @@ module.exports = (app, { getRouter }) => {
       res.json({"message": "/dsync failed"})
     }
   });
+
+  router.get("/test", (req, res) => {
+    res.json(sync.test())
+  })
 
   app.log.info("Yay, the app was loaded!");
 };

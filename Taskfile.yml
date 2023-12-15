@@ -20,3 +20,12 @@ tasks:
           -H "Content-Type: application/json" \
           -H "X-App-Install-ID: 44652407" \
           http://localhost:3000/ghass/dsync -d "@vault.json" | jq
+
+  e2e:test:
+    silent: true
+    cmds:
+      - |
+        curl -s \
+          -H "Content-Type: application/json" \
+          -H "X-App-Install-ID: 44652407" \
+          http://localhost:3000/ghass/test | jq

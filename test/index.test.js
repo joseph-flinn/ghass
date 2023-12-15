@@ -3,8 +3,6 @@ const nock = require("nock");
 const myProbotApp = require("..");
 const { Probot, ProbotOctokit } = require("probot");
 // Requiring our fixtures
-const payload = require("./fixtures/issues.opened");
-const issueCreatedBody = { body: "Thanks for opening this issue!" };
 const fs = require("fs");
 const path = require("path");
 
@@ -32,13 +30,19 @@ describe("My Probot app", () => {
   });
 
   test("creates a comment when an issue is opened", async () => {
+    const payload = require("./fixtures/issues.opened");
+    const issueCreatedBody = { body: "Thanks for opening this issue!" };
+
     const mock = nock("https://api.github.com")
       // Test that we correctly return a test token
       .post("/app/installations/2/access_tokens")
       .reply(200, {
         token: "test",
         permissions: {
-          issues: "write",
+          environments: "write",
+          metadata: "read",
+          organization_secrets: "write",
+          secrets: "write"
         },
       })
 

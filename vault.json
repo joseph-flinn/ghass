@@ -1,5 +1,7 @@
 {
-  "flinnsolutions/secret1": "This is an org level secret",
-  "flinnsolutions/gha-secret-sync-test/secret2": "This is a repo level secret",
-  "flinnsolutions/gha-secret-sync-test/prod/secret2": "This is an environment level secret"
+  "secrets": {
+    "flinnsolutions/secret1": "This is an org level secret",
+    "flinnsolutions/gha-secret-sync-test/secret2": "This is a repo level secret",
+    "flinnsolutions/gha-secret-sync-test/prod/secret2": "This is an environment level secret"
+  }
 }
